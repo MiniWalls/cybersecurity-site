@@ -1,0 +1,10 @@
+{
+    "food":[
+        {"price": "1", "type":"banana"},
+        {"price": "1.5", "type":"apple"}
+    ],
+    "drinks":[
+        {"price": "2", "type":"coffee"},
+        {"price": "1.95", "type":"tea"}
+    ]
+}
