@@ -1,3 +1,4 @@
+import { postUser } from "../api/serverUtils";
 import { useState } from "react";
 import { BsLockFill } from "react-icons/bs";
 
@@ -8,14 +9,25 @@ interface user{
 
 const Login = (): JSX.Element => {
 	const [user, setUser] = useState<user>({username: "", password: ""});
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	function handleClick() {
-		console.log(user);
+		setIsSubmitting(true);
+		const response = postUser(user);
+		console.log(response);
+
+		setTimeout(() => {
+			window.location.href = "/";
+      setIsSubmitting(false);
+    }, 1200); //1.2 seconds
 	}
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-		setUser((prevUser) => ({ ...prevUser, [name]: value }));
+		const regex=/^[\w&\-]*$/;
+		if (regex.test(value)) {
+			setUser((prevUser) => ({ ...prevUser, [name]: value }));
+		}
 	};
 
 	return (
@@ -38,8 +50,9 @@ const Login = (): JSX.Element => {
           type="password" name="password" value={user.password} placeholder="password" onChange={handleChange} />
 				</div>
 			</div>
-			<button className="mt-2 py-2 px-3 rounded-3xl bg-black text-white text-xl font-semibold flex items-center hover:opacity-70"
-        onClick={() => handleClick()}>
+			<button className="mt-2 py-2 px-3 rounded-3xl bg-black text-white text-xl 
+			font-semibold flex items-center hover:opacity-80 disabled:opacity-50"
+        onClick={() => handleClick()} disabled={isSubmitting}>
 				<BsLockFill size="24" className="mr-10"/>
 				<label className="pr-8">Login</label>
 			</button>

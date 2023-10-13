@@ -1,9 +1,10 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import NavBar from "./components/NavBar";
 import Home from './Pages/Home';
 import Basket from './Pages/Basket';
 import Login from './Pages/Login';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 function App() {
   return (
@@ -20,4 +21,10 @@ function App() {
   );
 }
 
-export default App;
+const AppWrapper = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+
+export default AppWrapper;

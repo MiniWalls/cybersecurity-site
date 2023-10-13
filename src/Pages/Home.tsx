@@ -38,7 +38,6 @@ const Home = (): JSX.Element => {
 
 return (
     <div className="md:px-20 mx-auto">
-      <h1>Home</h1>
       <div>
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
           {flattenedArray.map((product, index) => (
