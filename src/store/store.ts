@@ -13,10 +13,17 @@ export const productSlice = createSlice({
     deleteProduct:(state, action: PayloadAction<string>) => {
       return state.filter(product => product.type !== action.payload);
     },
+    updateProduct:(state, action: PayloadAction<Product>) => {
+      const {type, amount} = action.payload;
+      const product = state.find(product => product.type === type);
+      if (product) {
+        product.amount = amount;
+      }
+    }
   },
 });
 
-export const { addProduct, deleteProduct } = productSlice.actions;
+export const { addProduct, deleteProduct, updateProduct } = productSlice.actions;
 
 const store = configureStore({
   reducer: {
