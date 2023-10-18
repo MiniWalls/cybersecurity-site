@@ -5,6 +5,9 @@
     ],
     "drinks":[
         {"price": "2", "type":"coffee"},
-        {"price": "1.95", "type":"tea"}
+        {"price": "1.95", "type":"tea"},
+        {"price": "1.5", "type":"water"},
+        {"price": "2.5", "type":"juice"},
+        {"price": "3", "type":"milk"}
     ]
 }
