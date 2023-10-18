@@ -1,6 +1,7 @@
 import { postUser } from "../api/serverUtils";
 import { useState } from "react";
 import { BsLockFill } from "react-icons/bs";
+import LoginDialog from "../components/LoginDialog";
 
 interface user{
 	username: string;
@@ -19,7 +20,7 @@ const Login = (): JSX.Element => {
 		setTimeout(() => {
 			window.location.href = "/";
       setIsSubmitting(false);
-    }, 1200); //1.2 seconds
+    }, 2500); //2.5 seconds
 	}
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,6 +57,7 @@ const Login = (): JSX.Element => {
 				<BsLockFill size="24" className="mr-10"/>
 				<label className="pr-8">Login</label>
 			</button>
+			<LoginDialog showModal={isSubmitting}/>
 		</div>
 	);
 };
