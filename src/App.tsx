@@ -5,11 +5,13 @@ import Basket from './Pages/Basket';
 import Login from './Pages/Login';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import SideBar from './components/SideBar';
 
 function App() {
   return (
     <div className="flex flex-col">
       <NavBar />
+      <SideBar />
       <div className="px-2 mt-24">
         <Routes>
           <Route path="/" element={<Home/>} />

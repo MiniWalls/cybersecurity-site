@@ -1,4 +1,5 @@
 import { BsFillBasketFill } from 'react-icons/bs';
+import { RxHamburgerMenu } from 'react-icons/rx';
 import { selectProducts } from '../store/store';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -12,9 +13,12 @@ const NavBar = (): JSX.Element => {
   }
 
   return(
-    <div className="fixed top-0 w-screen h-16 m-0
+    <div className="fixed top-0 w-screen h-16 px-8
     flex flex-row
     text-3xl bg-white text-white shadow-lg">
+      <button className="ml-4 my-2 px-2 hover:bg-gray-200 rounded-md">
+        <RxHamburgerMenu size="48" className="text-black"/>
+      </button>
       <h1 className="font-bold text-gray-800 mr-5 ml-4 
       relative flex items-center hover:cursor-pointer" onClick={() => navigate("/")}>
           Shop</h1>
