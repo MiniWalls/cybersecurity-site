@@ -6,16 +6,12 @@ import { useEffect } from "react";
 interface ComponentProps {
   price: string,
   type: string,
+  image: string,
 }
 
 const ProductDisplay = (props: ComponentProps): JSX.Element => {
   const products = useSelector(selectProducts);
   const dispatch = useDispatch();
-  const images = getImageList();
-
-  useEffect(() => {
-    console.log(images);
-  });
 
   const handleClick = () => {
     if(products.some(product => product.type === props.type)){
@@ -32,8 +28,8 @@ const ProductDisplay = (props: ComponentProps): JSX.Element => {
   };
 
   return(
-    <div className="flex flex-col items-center justify-center w-[180px] h-[144px] bg-gray-200 rounded-lg shadow-lg">
-      <img className="h-16 w-2/3 object-cover" src={images[props.type]} alt="not found"/>
+    <div className="flex flex-col items-center justify-center w-[168px] h-[132px] bg-gray-200 rounded-lg shadow-lg">
+      <img className="h-16 w-2/3 object-cover" src={props.image} alt="not found"/>
       <h1 className="text-xl font-bold">{props.type} ¥{props.price}</h1>
       <button className="mr-2 ml-auto mb-2 px-4 mt-auto text-xl text-white bg-red-500 hover:opacity-80 rounded-3xl"
       onClick={() => handleClick()}>カート</button>

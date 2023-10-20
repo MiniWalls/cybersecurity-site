@@ -1,6 +1,7 @@
 /* import * as jsonData from '../../products.json'; */
 import ProductDisplay from '../components/ProductDisplay';
 import { useEffect, useState } from 'react';
+import getImageList from '../components/images/imageUtil';
 
 interface Item {
   price: string;
@@ -32,6 +33,7 @@ const products: CategoryItems = {
 
 const Home = (): JSX.Element => {
   const [flattenedArray, setFlattenedArray] = useState<Item[]>([]);
+  const images = getImageList();
 
   useEffect(() => {
     const tempFlattenedArray: Item[] = [];
@@ -45,9 +47,9 @@ const Home = (): JSX.Element => {
 return (
     <div className="md:px-20 mx-auto">
       <div>
-        <div className="mx-auto max-w-[80%] grid grid-cols-3 md:grid-cols-6 gap-16">
+        <div className="mx-auto lg:max-w-[80%] grid grid-cols-2 md:grid-cols-4 2xl:grid-cols-6 gap-4 2xl:gap-16">
           {flattenedArray.map((product, index) => (
-            <ProductDisplay key={index} price={product.price} type={product.type} />
+            <ProductDisplay key={index} price={product.price} type={product.type} image={images[product.type]} />
           ))}
         </div>
       </div>
