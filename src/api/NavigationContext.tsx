@@ -1,39 +1,39 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
-interface MyContextType {
+interface NavigationContextType {
   isButtonEnabled: boolean;
   toggleButton: () => void;
 }
 
-const MyContext = createContext<MyContextType | undefined>(undefined);
+const NavigationContext = createContext<NavigationContextType | undefined>(undefined);
 
-export function useMyContext() {
-  const context = useContext(MyContext);
+export function useNavigationContext() {
+  const context = useContext(NavigationContext);
   if (context === undefined) {
     throw new Error("useMyContext must be used within a MyContextProvider");
   }
   return context;
 }
 
-interface MyContextProviderProps {
+interface NavigationContextProviderProps {
   children: ReactNode;
 }
 
-export function NavigationContextProvider({ children }: MyContextProviderProps) {
+export function NavigationContextProvider({ children }: NavigationContextProviderProps) {
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
 
   const toggleButton = () => {
     setIsButtonEnabled((prev) => !prev);
   };
 
-  const contextValue: MyContextType = {
+  const contextValue: NavigationContextType = {
     isButtonEnabled,
     toggleButton,
   };
 
   return (
-    <MyContext.Provider value={contextValue}>
+    <NavigationContext.Provider value={contextValue}>
       {children}
-    </MyContext.Provider>
+    </NavigationContext.Provider>
   );
 }

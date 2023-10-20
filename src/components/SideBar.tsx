@@ -1,7 +1,7 @@
-import { useMyContext } from '../api/NavigationContext';
+import { useNavigationContext } from '../api/NavigationContext';
 
 const SideBar = (): JSX.Element => {
-  const { isButtonEnabled, toggleButton } = useMyContext();
+  const { isButtonEnabled, toggleButton } = useNavigationContext();
 
   return (
     <>

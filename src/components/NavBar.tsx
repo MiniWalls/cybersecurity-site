@@ -3,13 +3,13 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { selectProducts } from '../store/store';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMyContext } from '../api/NavigationContext';
+import { useNavigationContext } from '../api/NavigationContext';
 
 
 const NavBar = (): JSX.Element => {
   const products = useSelector(selectProducts);
   const navigate = useNavigate();
-  const { isButtonEnabled, toggleButton } = useMyContext();
+  const { toggleButton } = useNavigationContext();
   
   function handleClick() {
     navigate('/login');
