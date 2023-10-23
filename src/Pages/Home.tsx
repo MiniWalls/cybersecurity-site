@@ -2,6 +2,8 @@
 import ProductDisplay from '../components/ProductDisplay';
 import { useEffect, useState } from 'react';
 import getImageList from '../components/images/imageUtil';
+import { useSelector } from 'react-redux';
+import { selectCategoryState } from '../store/store';
 
 interface Item {
   price: string;
@@ -34,6 +36,7 @@ const products: CategoryItems = {
 const Home = (): JSX.Element => {
   const [flattenedArray, setFlattenedArray] = useState<Item[]>([]);
   const images = getImageList();
+  const categoryState = useSelector(selectCategoryState);
 
   useEffect(() => {
     const tempFlattenedArray: Item[] = [];
@@ -47,6 +50,7 @@ const Home = (): JSX.Element => {
 return (
     <div className="md:px-20 mx-auto">
       <div>
+        <p>{categoryState.categoryState}</p>
         <div className="mx-auto lg:max-w-[80%] grid grid-cols-2 md:grid-cols-4 2xl:grid-cols-6 gap-4 2xl:gap-16">
           {flattenedArray.map((product, index) => (
             <ProductDisplay key={index} price={product.price} type={product.type} image={images[product.type]} />

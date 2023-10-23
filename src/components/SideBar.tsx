@@ -1,7 +1,29 @@
 import { useNavigationContext } from '../api/NavigationContext';
+import { setCategoryState, selectProducts } from '../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const SideBar = (): JSX.Element => {
   const { isButtonEnabled, toggleButton } = useNavigationContext();
+  const categories = [] as string[];
+  const dispatch = useDispatch();
+  const products = useSelector(selectProducts);
+
+  useEffect (() => {
+    console.log(products);
+    for(let i = 0; i < products.length; i++){
+      if(!categories.includes(products[i].type)){
+        categories.push(products[i].type);
+      }
+    }
+    console.log(categories);
+  }, [products]);
+
+  const handleCategoryClick = (category: string) => {
+    console.log("clicked category button");
+    dispatch(setCategoryState(category));
+    toggleButton();
+  };
 
   return (
     <>
@@ -15,9 +37,9 @@ const SideBar = (): JSX.Element => {
               </h1>
               <li className="[&>*]:mb-4 [&>*]:p-1 [&>*]:border-b-2 [&>*]:w-full [&>*]:text-left
               [&>*]:hover:opacity-70 list-none">
-                <button className="hover:bg-zinc-100">ABC</button>
-                <button className="hover:bg-zinc-100">DEF</button>
-                <button className="hover:bg-zinc-100">GHI</button>
+                <button className="hover:bg-zinc-100" onClick={() => handleCategoryClick("abc")}>ABC</button>
+                <button className="hover:bg-zinc-100" onClick={() => handleCategoryClick("DEF")}>DEF</button>
+                <button className="hover:bg-zinc-100" onClick={() => handleCategoryClick("GHI")}>GHI</button>
               </li>
             </div>
         </div>

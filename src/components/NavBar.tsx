@@ -28,8 +28,8 @@ const NavBar = (): JSX.Element => {
         <div className="ml-auto flex flex-auto max-w-fit">
           <NavBarIcon icon={<BsFillBasketFill />} url="/basket" />
         </div>
-        <span className="text2xl font-semibold text-red-600 mt-8 flex mr-4 relative left-[-10px] 
-        h-10 w-10 bg-slate-100 rounded-full justify-center">{products.length}</span>
+        <span className="text2xl font-semibold text-red-600 mt-8 flex mr-2 relative left-[-10px] 
+        h-10 w-10 bg-slate-100 rounded-full justify-center px-1">{products.length}</span>
         <button className="mr-4 text-gray-900 font-semibold" onClick={() => handleClick()}>
           Sign in
         </button> 
