@@ -1,5 +1,5 @@
 export interface Product {
   type: string;
-  price: string;
+  price: number;
   amount: number;
 }
