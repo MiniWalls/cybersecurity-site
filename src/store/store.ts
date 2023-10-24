@@ -33,19 +33,35 @@ export const stateSlice = createSlice({
   }
 });
 
+export const categorySlice = createSlice({
+  name: 'category',
+  initialState: ["test"] as string[],
+  reducers: {
+    addCategory: (state, action: PayloadAction<string>) => {
+      state.push(action.payload);
+    },
+    deleteCategories: () => {
+      return [];
+    }
+  }
+});
+
 export const { addProduct, deleteProduct, updateProduct } = productSlice.actions;
 export const { setCategoryState } = stateSlice.actions;
+export const { addCategory, deleteCategories } = categorySlice.actions;
 
 const store = configureStore({
   reducer: {
     products: productSlice.reducer,
     appStates: stateSlice.reducer,
+    category: categorySlice.reducer
   },
 });
 
 type RootState = ReturnType<typeof store.getState>;
 
 export const selectProducts = (state: RootState) => state.products;
-export const selectCategoryState = (state: RootState) => state.appStates;
+export const selectState = (state: RootState) => state.appStates;
+export const selectCategory = (state: RootState) => state.category;
 
 export default store;
