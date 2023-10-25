@@ -25,8 +25,7 @@ const SideBar = (): JSX.Element => {
               </h1>
               <li className="[&>*]:mb-4 [&>*]:p-1 [&>*]:border-b-2 [&>*]:w-full [&>*]:text-left
               [&>*]:hover:opacity-70 list-none">
-                <button className="hover:bg-zinc-100" onClick={() => handleCategoryClick("abc")}>ABC</button>
-                <button className="hover:bg-zinc-100" onClick={() => handleCategoryClick("DEF")}>DEF</button>
+                <button className="hover:bg-zinc-100" onClick={() => handleCategoryClick("")}>All</button>
                 {categories.map((category) => (
                   <button className="hover:bg-zinc-100" onClick={() => handleCategoryClick(category)} key={category}>{category}</button>
                 ))}

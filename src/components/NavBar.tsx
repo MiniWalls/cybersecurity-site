@@ -4,6 +4,7 @@ import { selectProducts } from '../store/store';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useNavigationContext } from '../api/NavigationContext';
+import ReverseTabnabber from './ReverseTabnabber';
 
 
 const NavBar = (): JSX.Element => {
@@ -24,15 +25,17 @@ const NavBar = (): JSX.Element => {
       </button>
       <h1 className="font-bold text-gray-800 mr-5 ml-4 
       relative flex items-center hover:cursor-pointer" onClick={() => navigate("/")}>
-          Shop</h1>
-        <div className="ml-auto flex flex-auto max-w-fit">
-          <NavBarIcon icon={<BsFillBasketFill />} url="/basket" />
-        </div>
-        <span className="text2xl font-semibold text-red-600 mt-8 flex mr-2 relative left-[-10px] 
-        h-10 w-10 bg-slate-100 rounded-full justify-center px-1">{products.length}</span>
-        <button className="mr-4 text-gray-900 font-semibold" onClick={() => handleClick()}>
-          Sign in
-        </button> 
+        Shop</h1>
+      <ReverseTabnabber />
+      <div className="ml-auto flex flex-auto max-w-fit">
+        <NavBarIcon icon={<BsFillBasketFill />} url="/basket" />
+      </div>
+      <span className="text2xl font-semibold text-red-600 mt-8 flex mr-2 relative left-[-10px] 
+      h-10 w-10 bg-slate-100 rounded-full justify-center px-1">
+        {products.length}</span>
+      <button className="mr-4 text-gray-900 font-semibold" onClick={() => handleClick()}>
+        Sign in
+      </button> 
     </div>
   );
 };

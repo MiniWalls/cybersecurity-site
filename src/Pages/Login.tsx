@@ -2,14 +2,10 @@ import { postUser } from "../api/serverUtils";
 import { useState } from "react";
 import { BsLockFill } from "react-icons/bs";
 import LoginDialog from "../components/LoginDialog";
-
-interface user{
-	username: string;
-	password: string;
-}
+import { User } from "../store/types";
 
 const Login = (): JSX.Element => {
-	const [user, setUser] = useState<user>({username: "", password: ""});
+	const [user, setUser] = useState<User>({username: "", password: ""});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	function handleClick() {

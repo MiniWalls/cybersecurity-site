@@ -35,7 +35,7 @@ export const stateSlice = createSlice({
 
 export const categorySlice = createSlice({
   name: 'category',
-  initialState: ["test"] as string[],
+  initialState: [] as string[],
   reducers: {
     addCategory: (state, action: PayloadAction<string>) => {
       state.push(action.payload);

@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import SideBar from './components/SideBar';
 import { NavigationContextProvider } from './api/NavigationContext';
+import Warning from './Pages/Warning';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="/basket" element={<Basket/>} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/warning" element={<Warning/>} />
         </Routes>
       </div>
     </div>

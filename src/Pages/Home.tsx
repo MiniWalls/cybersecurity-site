@@ -17,6 +17,7 @@ const Home = (): JSX.Element => {
   const images = getImageList();
   const appStates = useSelector(selectState);
   const [products, SetProducts] = useState<Item[]>([]);
+  const [selectedProducts, setSelectedProducts] = useState<Item[]>([]);
   const dispatch = useDispatch();
   const categories = useSelector(selectCategory);
 
@@ -24,10 +25,19 @@ const Home = (): JSX.Element => {
     axios.get<Item[]>("http://localhost:3001/products")
     .then((response) => {
       SetProducts(response.data);
+      setSelectedProducts(response.data);
     }).catch((error) => {
       console.log(error);
     });
   }, []);
+
+  useEffect(() => {
+    if(appStates.categoryState === ""){
+      setSelectedProducts(products);
+    } else {
+      setSelectedProducts(products.filter(product => product.category === appStates.categoryState));
+    }
+  }, [appStates.categoryState]);
 
   useEffect(() => {
     const tempCategories: string[] = [];
@@ -46,7 +56,7 @@ return (
       <div>
         <p>{appStates.categoryState}</p>
         <div className="mx-auto lg:max-w-[80%] grid grid-cols-2 md:grid-cols-4 2xl:grid-cols-6 gap-4 2xl:gap-16">
-          {products?.map((product, index) => (
+          {selectedProducts?.map((product, index) => (
             <ProductDisplay key={index} price={product.price} name={product.name} image={images[product.name]} />
           ))}
         </div>
