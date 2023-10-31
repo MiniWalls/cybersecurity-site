@@ -8,7 +8,6 @@ const SideBar = (): JSX.Element => {
   const categories = useSelector(selectCategory);
 
   const handleCategoryClick = (category: string) => {
-    console.log("clicked category button");
     dispatch(setCategoryState(category));
     toggleButton();
   };

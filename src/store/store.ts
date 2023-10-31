@@ -27,7 +27,6 @@ export const stateSlice = createSlice({
   initialState: {categoryState: "", loggedin: false, username: ""},
   reducers: {
     setCategoryState: (state, action: PayloadAction<string>) => {
-      console.log("well the reducer was called???");
       state.categoryState = action.payload;
     }
   }
