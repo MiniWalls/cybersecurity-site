@@ -47,7 +47,7 @@ const Warning = (): JSX.Element => {
         </div>
       </form>
       {data.map((item) => (
-        <div className="bg-gray-200 max-w-fit p-2 mt-2">
+        <div id={item} className="bg-gray-200 max-w-fit p-2 mt-2">
           <p>{item}</p>
         </div>
       ))}

@@ -32,7 +32,8 @@ function ClipboardCopy({ copyText }: ComponentProps): JSX.Element {
 
   return (
     <div>
-      <input type="text" value={copyText} readOnly className="mx-1 my-1 pl-1 rounded-md border-gray-300 border-[1px]"/>
+      <input type="text" value={copyText} readOnly 
+      className="mx-1 my-1 pl-1 rounded-md border-gray-300 border-[1px]"/>
       <button type="button" onClick={handleCopyClick} className="px-1 rounded-md border-gray-800 border-[1px]">
         <span>{isCopied ? 'Copied!' : 'Copy'}</span>
       </button>
