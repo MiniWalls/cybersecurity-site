@@ -1,7 +1,7 @@
 const AppFooter = (): JSX.Element => {
   return(
-    <div className="sticky inset-x-0 bottom-0">
-      <footer className="bg-white rounded-lg shadow mx-4 mt-4 mb-2 dark:bg-gray-800">
+    <div className="sticky inset-x-0 bottom-0 bg-white">
+      <footer className="bg-white rounded-lg shadow mx-4 mb-2 dark:bg-gray-800">
           <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
             <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023&nbsp;
               <a href="localhost:3000/" className="hover:underline">Home™</a>. All Rights Reserved.
